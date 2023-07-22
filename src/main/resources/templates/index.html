@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+		<form th:action="@{/submit}" th:object="${std}" method="get"  >
+		
+		
+			<p th:if="${#fields.hasErrors('id')}" th:errors="*{id}"> </p>
+			id:
+			<input type="text" th:field="*{id}"><br>
+			
+			<p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"> </p>
+			name:
+			<input type="text" th:field="*{name}"><br>
+			
+			<p th:if="${#fields.hasErrors('dob')}" th:errors="*{dob}"> </p>
+			dob:
+			<input type="date" th:field="*{dob}"><br>
+			department:
+			<p th:if="${#fields.hasErrors('department')}" th:errors="*{department}"> </p>
+			<select th:field="*{department}">
+				<option th:each="each:${alldpts}" th:value="${each}" th:text="${each}"> </option>
+			
+			</select><br>
+			<input type="submit" value="submit">
+			
+		
+		
+		</form>
+
+
+
+</body>
+</html>
